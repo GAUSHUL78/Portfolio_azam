@@ -37,58 +37,32 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
-        isScrolled ? "bg-[#050414] bg-opacity-50 backdrop-blur-md shadow-md" : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition duration-300 px-4 md:px-8 lg:px-12 ${isScrolled ? "bg-[#18181b]/80 backdrop-blur-md shadow-md" : "bg-transparent"}`}
     >
-      <div className="text-white py-5 flex justify-between items-center">
-        {/* Logo */}
-        <div className="text-lg font-semibold cursor-pointer">
-          <span className="text-[#8245ec]">&lt;</span>
-          <span className="text-white">Gaushul</span>
-          <span className="text-[#8245ec]">/</span>
-          <span className="text-white">Azam</span>
-          <span className="text-[#8245ec]">&gt;</span>
+      <div className="text-white py-5 flex items-center w-full justify-between">
+        {/* Logo on the left */}
+        <div className="text-2xl font-extrabold cursor-pointer bg-gradient-to-r from-purple-400 via-pink-500 to-indigo-500 bg-clip-text text-transparent tracking-widest drop-shadow-lg">
+          Azam<span className="ml-1 text-white font-light text-lg align-top">Portfolio</span>
         </div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-8 text-gray-300">
+        {/* Navigation sections on the right */}
+        <ul className="hidden md:flex space-x-8 text-gray-300 items-center">
           {menuItems.map((item) => (
             <li
               key={item.id}
-              className={`cursor-pointer hover:text-[#8245ec] ${
-                activeSection === item.id ? "text-[#8245ec]" : ""
-              }`}
+              className={`cursor-pointer`}
             >
-              <button onClick={() => handleMenuItemClick(item.id)}>
+              <button
+                onClick={() => handleMenuItemClick(item.id)}
+                className={`px-4 py-2 rounded-full font-bold transition-all duration-300 bg-gradient-to-r from-[#8245ec] to-[#a855f7] text-white shadow-md hover:scale-105 hover:from-pink-500 hover:to-purple-500 ${activeSection === item.id ? "ring-2 ring-pink-400" : ""
+                  }`}
+              >
                 {item.label}
               </button>
             </li>
           ))}
         </ul>
-
-        {/* Social Icons */}
-        <div className="hidden md:flex space-x-4">
-          <a
-            href="https://github.com/GAUSHUL78"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec]"
-          >
-            <FaGithub size={24} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/gaushul-azam-064b58257/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-300 hover:text-[#8245ec]"
-          >
-            <FaLinkedin size={24} />
-          </a>
-        </div>
-
         {/* Mobile Menu Icon */}
-        <div className="md:hidden">
+        <div className="md:hidden ml-4">
           {isOpen ? (
             <FiX
               className="text-3xl text-[#8245ec] cursor-pointer"
@@ -105,38 +79,30 @@ const Navbar = () => {
 
       {/* Mobile Menu Items */}
       {isOpen && (
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-opacity-50 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden">
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-opacity-50 z-50 rounded-lg shadow-lg md:hidden">
           <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
             {menuItems.map((item) => (
               <li
                 key={item.id}
-                className={`cursor-pointer hover:text-white ${
-                  activeSection === item.id ? "text-[#8245ec]" : ""
-                }`}
+                className={`cursor-pointer`}
               >
-                <button onClick={() => handleMenuItemClick(item.id)}>
+                <button
+                  onClick={() => handleMenuItemClick(item.id)}
+                  className={`px-6 py-2 rounded-full font-bold transition-all duration-300 bg-gradient-to-r from-[#8245ec] to-[#a855f7] text-white shadow-md hover:scale-105 hover:from-pink-500 hover:to-purple-500 ${activeSection === item.id ? "ring-2 ring-pink-400" : ""
+                    }`}
+                >
                   {item.label}
                 </button>
               </li>
             ))}
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/codingmastr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
-              >
-                <FaGithub size={24} />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/gaushul-azam-064b58257/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-300 hover:text-white"
-              >
-                <FaLinkedin size={24} />
-              </a>
-            </div>
+            <a
+              href="https://drive.google.com/file/d/11qHeHkrAb1p5J22leXgny05SC0qgVTIy/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 px-6 py-2 rounded-full font-bold bg-gradient-to-r from-[#8245ec] to-[#a855f7] text-white shadow-md hover:scale-105 hover:from-pink-500 hover:to-purple-500 transition-all duration-300"
+            >
+              Download CV
+            </a>
           </ul>
         </div>
       )}

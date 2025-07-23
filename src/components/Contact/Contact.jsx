@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 const Contact = () => {
   const form = useRef();
@@ -12,10 +13,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_02bya23",  
-        "template_ne9j6hs",  
+        "service_02bya23",
+        "template_ne9j6hs",
         form.current,
-        "IReNZdTPKf7ZBkr9y"  
+        "IReNZdTPKf7ZBkr9y"
       )
       .then(
         () => {
@@ -49,26 +50,38 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center py-24 px-[12vw] md:px-[7vw] lg:px-[20vw]"
+      className="flex flex-col md:flex-row items-center justify-center py-24 px-4 md:px-8 lg:px-12 gap-10"
     >
-      {/* Toast Container */}
-      <ToastContainer />
-
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">CONTACT</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          I’d love to hear from you—reach out for any opportunities or questions!
-        </p>
+      {/* Left: Contact Info Card */}
+      <div className="w-full md:w-1/2 max-w-md bg-[#18181b] p-8 rounded-2xl shadow-lg border border-gray-800 mb-10 md:mb-0">
+        <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
+        <div className="flex items-start mb-6">
+          <FaEnvelope className="text-blue-500 text-2xl mr-4 mt-1" />
+          <div>
+            <div className="font-bold text-white">Email</div>
+            <div className="text-gray-300">gaushulazamazam786@gmail.com</div>
+          </div>
+        </div>
+        <div className="flex items-start mb-6">
+          <FaPhone className="text-blue-500 text-2xl mr-4 mt-1" />
+          <div>
+            <div className="font-bold text-white">Phone</div>
+            <div className="text-gray-300">7347849223</div>
+          </div>
+        </div>
+        <div className="flex items-start">
+          <FaMapMarkerAlt className="text-blue-500 text-2xl mr-4 mt-1" />
+          <div>
+            <div className="font-bold text-white">Location</div>
+            <div className="text-gray-300">Snagrur, Punjab</div>
+          </div>
+        </div>
       </div>
-
-      {/* Contact Form */}
-      <div className="mt-8 w-full max-w-md bg-[#0d081f] p-6 rounded-lg shadow-lg border border-gray-700">
+      {/* Right: Contact Form */}
+      <div className="w-full md:w-1/2 max-w-md bg-[#0d081f] p-6 rounded-lg shadow-lg border border-gray-700">
         <h3 className="text-xl font-semibold text-white text-center">
           Connect With Me <span className="ml-1">🚀</span>
         </h3>
-
         <form ref={form} onSubmit={sendEmail} className="mt-4 flex flex-col space-y-4">
           <input
             type="email"
@@ -98,8 +111,6 @@ const Contact = () => {
             required
             className="w-full p-3 rounded-md bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500"
           />
-          
-          {/* Send Button */}
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-3 text-white font-semibold rounded-md hover:opacity-90 transition"
